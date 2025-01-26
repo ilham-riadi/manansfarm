@@ -8,7 +8,6 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="stylesheet" href="css/leaflet.css">
         <link rel="stylesheet" href="css/L.Control.Layers.Tree.css">
-        <link rel="stylesheet" href="css/L.Control.Locate.min.css">
         <link rel="stylesheet" href="css/qgis2web.css">
         <link rel="stylesheet" href="css/fontawesome-all.min.css">
         <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
@@ -29,7 +28,6 @@
         <script src="js/qgis2web_expressions.js"></script>
         <script src="js/leaflet.js"></script>
         <script src="js/L.Control.Layers.Tree.min.js"></script>
-        <script src="js/L.Control.Locate.min.js"></script>
         <script src="js/leaflet.rotatedMarker.js"></script>
         <script src="js/leaflet.pattern.js"></script>
         <script src="js/leaflet-hash.js"></script>
@@ -39,10 +37,9 @@
         <script src="js/labels.js"></script>
         <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
         <script src="js/leaflet-measure.js"></script>
-        <script src="data/LahanProduksi_2.js"></script>
-        <script src="data/BatasKebun_3.js"></script>
-        <script src="data/contour_minor_4.js"></script>
-        <script src="data/contour_mayor_5.js"></script>
+        <script src="data/BatasKebun_5.js"></script>
+        <script src="data/contour_minor_6.js"></script>
+        <script src="data/contour_mayor_7.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -97,7 +94,6 @@
         var zoomControl = L.control.zoom({
             position: 'topleft'
         }).addTo(map);
-        L.control.locate({locateOptions: {maxZoom: 19}}).addTo(map);
         var measureControl = new L.Control.Measure({
             position: 'topleft',
             primaryLengthUnit: 'feet',
@@ -139,281 +135,33 @@
             maxNativeZoom: 20
         });
         layer_GoogleSatellite_1;
-        map.addLayer(layer_GoogleSatellite_1);
-        function pop_LahanProduksi_2(feature, layer) {
-            layer.on({
-                mouseout: function(e) {
-                    for (var i in e.target._eventParents) {
-                        if (typeof e.target._eventParents[i].resetStyle === 'function') {
-                            e.target._eventParents[i].resetStyle(e.target);
-                        }
-                    }
-                    if (typeof layer.closePopup == 'function') {
-                        layer.closePopup();
-                    } else {
-                        layer.eachLayer(function(feature){
-                            feature.closePopup()
-                        });
-                    }
-                },
-                mouseover: highlightFeature,
-            });
-            var popupContent = '<table>\
-                    <tr>\
-                        <th scope="row">Kode</th>\
-                        <td>' + (feature.properties['Kode'] !== null ? autolinker.link(feature.properties['Kode'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
-            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
-			layer.on('popupopen', function(e) {
-				addClassToPopupIfMedia(content, e.popup);
-			});
-			layer.bindPopup(content, { maxHeight: 400 });
-        }
-
-        function style_LahanProduksi_2_0(feature) {
-            switch(String(feature.properties['Warna'])) {
-                case '1':
-                    return {
-                pane: 'pane_LahanProduksi_2',
-                opacity: 1,
-                color: 'rgba(35,35,255,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(255,255,255,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '2':
-                    return {
-                pane: 'pane_LahanProduksi_2',
-                opacity: 1,
-                color: 'rgba(35,35,255,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(247,255,1,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '3':
-                    return {
-                pane: 'pane_LahanProduksi_2',
-                opacity: 1,
-                color: 'rgba(35,35,255,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(77,175,74,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '4':
-                    return {
-                pane: 'pane_LahanProduksi_2',
-                opacity: 1,
-                color: 'rgba(35,35,255,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(246,4,0,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '5':
-                    return {
-                pane: 'pane_LahanProduksi_2',
-                opacity: 1,
-                color: 'rgba(35,35,255,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(221,128,57,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '6':
-                    return {
-                pane: 'pane_LahanProduksi_2',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(94,77,141,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '7':
-                    return {
-                pane: 'pane_LahanProduksi_2',
-                opacity: 1,
-                color: 'rgba(35,35,255,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(255,127,0,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '8':
-                    return {
-                pane: 'pane_LahanProduksi_2',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(146,200,111,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '9':
-                    return {
-                pane: 'pane_LahanProduksi_2',
-                opacity: 1,
-                color: 'rgba(35,35,255,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(1,183,255,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '10':
-                    return {
-                pane: 'pane_LahanProduksi_2',
-                opacity: 1,
-                color: 'rgba(35,35,255,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(255,127,238,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '11':
-                    return {
-                pane: 'pane_LahanProduksi_2',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(84,224,239,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '12':
-                    return {
-                pane: 'pane_LahanProduksi_2',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(208,232,130,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '13':
-                    return {
-                pane: 'pane_LahanProduksi_2',
-                opacity: 1,
-                color: 'rgba(35,35,255,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(246,4,0,0.792156862745098)',
-                interactive: true,
-            }
-                    break;
-                case '14':
-                    return {
-                pane: 'pane_LahanProduksi_2',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(246,4,0,0.803921568627451)',
-                interactive: true,
-            }
-                    break;
-                case '15':
-                    return {
-                pane: 'pane_LahanProduksi_2',
-                opacity: 1,
-                color: 'rgba(35,35,255,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(150,150,150,1.0)',
-                interactive: true,
-            }
-                    break;
-            }
-        }
-        map.createPane('pane_LahanProduksi_2');
-        map.getPane('pane_LahanProduksi_2').style.zIndex = 402;
-        map.getPane('pane_LahanProduksi_2').style['mix-blend-mode'] = 'normal';
-        var layer_LahanProduksi_2 = new L.geoJson(json_LahanProduksi_2, {
-            attribution: '',
-            interactive: true,
-            dataVar: 'json_LahanProduksi_2',
-            layerName: 'layer_LahanProduksi_2',
-            pane: 'pane_LahanProduksi_2',
-            onEachFeature: pop_LahanProduksi_2,
-            style: style_LahanProduksi_2_0,
-        });
-        bounds_group.addLayer(layer_LahanProduksi_2);
-        function pop_BatasKebun_3(feature, layer) {
+        map.createPane('pane_Topografi_2');
+        map.getPane('pane_Topografi_2').style.zIndex = 402;
+        var img_Topografi_2 = 'data/Topografi_2.png';
+        var img_bounds_Topografi_2 = [[-7.135785049129933,107.46903611980291],[-7.1262660371465385,107.47436575416981]];
+        var layer_Topografi_2 = new L.imageOverlay(img_Topografi_2,
+                                              img_bounds_Topografi_2,
+                                              {pane: 'pane_Topografi_2'});
+        bounds_group.addLayer(layer_Topografi_2);
+        map.addLayer(layer_Topografi_2);
+        map.createPane('pane_Slope_3');
+        map.getPane('pane_Slope_3').style.zIndex = 403;
+        var img_Slope_3 = 'data/Slope_3.png';
+        var img_bounds_Slope_3 = [[-7.135785049129933,107.46903611980291],[-7.1262660371465385,107.47436575416981]];
+        var layer_Slope_3 = new L.imageOverlay(img_Slope_3,
+                                              img_bounds_Slope_3,
+                                              {pane: 'pane_Slope_3'});
+        bounds_group.addLayer(layer_Slope_3);
+        map.createPane('pane_HillShade_4');
+        map.getPane('pane_HillShade_4').style.zIndex = 404;
+        var img_HillShade_4 = 'data/HillShade_4.png';
+        var img_bounds_HillShade_4 = [[-7.135785049129933,107.46903611980291],[-7.1262660371465385,107.47436575416981]];
+        var layer_HillShade_4 = new L.imageOverlay(img_HillShade_4,
+                                              img_bounds_HillShade_4,
+                                              {pane: 'pane_HillShade_4'});
+        bounds_group.addLayer(layer_HillShade_4);
+        map.addLayer(layer_HillShade_4);
+        function pop_BatasKebun_5(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -443,9 +191,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_BatasKebun_3_0() {
+        function style_BatasKebun_5_0() {
             return {
-                pane: 'pane_BatasKebun_3',
+                pane: 'pane_BatasKebun_5',
                 opacity: 1,
                 color: 'rgba(25,207,177,1.0)',
                 dashArray: '',
@@ -458,21 +206,21 @@
                 interactive: false,
             }
         }
-        map.createPane('pane_BatasKebun_3');
-        map.getPane('pane_BatasKebun_3').style.zIndex = 403;
-        map.getPane('pane_BatasKebun_3').style['mix-blend-mode'] = 'normal';
-        var layer_BatasKebun_3 = new L.geoJson(json_BatasKebun_3, {
+        map.createPane('pane_BatasKebun_5');
+        map.getPane('pane_BatasKebun_5').style.zIndex = 405;
+        map.getPane('pane_BatasKebun_5').style['mix-blend-mode'] = 'normal';
+        var layer_BatasKebun_5 = new L.geoJson(json_BatasKebun_5, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_BatasKebun_3',
-            layerName: 'layer_BatasKebun_3',
-            pane: 'pane_BatasKebun_3',
-            onEachFeature: pop_BatasKebun_3,
-            style: style_BatasKebun_3_0,
+            dataVar: 'json_BatasKebun_5',
+            layerName: 'layer_BatasKebun_5',
+            pane: 'pane_BatasKebun_5',
+            onEachFeature: pop_BatasKebun_5,
+            style: style_BatasKebun_5_0,
         });
-        bounds_group.addLayer(layer_BatasKebun_3);
-        map.addLayer(layer_BatasKebun_3);
-        function pop_contour_minor_4(feature, layer) {
+        bounds_group.addLayer(layer_BatasKebun_5);
+        map.addLayer(layer_BatasKebun_5);
+        function pop_contour_minor_6(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -508,9 +256,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_contour_minor_4_0() {
+        function style_contour_minor_6_0() {
             return {
-                pane: 'pane_contour_minor_4',
+                pane: 'pane_contour_minor_6',
                 opacity: 1,
                 color: 'rgba(107,64,8,1.0)',
                 dashArray: '',
@@ -521,20 +269,20 @@
                 interactive: false,
             }
         }
-        map.createPane('pane_contour_minor_4');
-        map.getPane('pane_contour_minor_4').style.zIndex = 404;
-        map.getPane('pane_contour_minor_4').style['mix-blend-mode'] = 'normal';
-        var layer_contour_minor_4 = new L.geoJson(json_contour_minor_4, {
+        map.createPane('pane_contour_minor_6');
+        map.getPane('pane_contour_minor_6').style.zIndex = 406;
+        map.getPane('pane_contour_minor_6').style['mix-blend-mode'] = 'normal';
+        var layer_contour_minor_6 = new L.geoJson(json_contour_minor_6, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_contour_minor_4',
-            layerName: 'layer_contour_minor_4',
-            pane: 'pane_contour_minor_4',
-            onEachFeature: pop_contour_minor_4,
-            style: style_contour_minor_4_0,
+            dataVar: 'json_contour_minor_6',
+            layerName: 'layer_contour_minor_6',
+            pane: 'pane_contour_minor_6',
+            onEachFeature: pop_contour_minor_6,
+            style: style_contour_minor_6_0,
         });
-        bounds_group.addLayer(layer_contour_minor_4);
-        function pop_contour_mayor_5(feature, layer) {
+        bounds_group.addLayer(layer_contour_minor_6);
+        function pop_contour_mayor_7(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -571,9 +319,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_contour_mayor_5_0() {
+        function style_contour_mayor_7_0() {
             return {
-                pane: 'pane_contour_mayor_5',
+                pane: 'pane_contour_mayor_7',
                 opacity: 1,
                 color: 'rgba(162,73,0,0.792)',
                 dashArray: '',
@@ -584,20 +332,19 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_contour_mayor_5');
-        map.getPane('pane_contour_mayor_5').style.zIndex = 405;
-        map.getPane('pane_contour_mayor_5').style['mix-blend-mode'] = 'normal';
-        var layer_contour_mayor_5 = new L.geoJson(json_contour_mayor_5, {
+        map.createPane('pane_contour_mayor_7');
+        map.getPane('pane_contour_mayor_7').style.zIndex = 407;
+        map.getPane('pane_contour_mayor_7').style['mix-blend-mode'] = 'normal';
+        var layer_contour_mayor_7 = new L.geoJson(json_contour_mayor_7, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_contour_mayor_5',
-            layerName: 'layer_contour_mayor_5',
-            pane: 'pane_contour_mayor_5',
-            onEachFeature: pop_contour_mayor_5,
-            style: style_contour_mayor_5_0,
+            dataVar: 'json_contour_mayor_7',
+            layerName: 'layer_contour_mayor_7',
+            pane: 'pane_contour_mayor_7',
+            onEachFeature: pop_contour_mayor_7,
+            style: style_contour_mayor_7_0,
         });
-        bounds_group.addLayer(layer_contour_mayor_5);
-        map.addLayer(layer_contour_mayor_5);
+        bounds_group.addLayer(layer_contour_mayor_7);
         var osmGeocoder = new L.Control.Geocoder({
             collapsed: true,
             position: 'topleft',
@@ -609,10 +356,12 @@
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
         var overlaysTree = [
-            {label: '<img src="legend/contour_mayor_5.png" /> contour_mayor', layer: layer_contour_mayor_5},
-            {label: '<img src="legend/contour_minor_4.png" /> contour_minor', layer: layer_contour_minor_4},
-            {label: '<img src="legend/BatasKebun_3.png" /> Batas Kebun', layer: layer_BatasKebun_3},
-            {label: 'Lahan Produksi<br /><table><tr><td style="text-align: center;"><img src="legend/LahanProduksi_2_10.png" /></td><td>1</td></tr><tr><td style="text-align: center;"><img src="legend/LahanProduksi_2_21.png" /></td><td>2</td></tr><tr><td style="text-align: center;"><img src="legend/LahanProduksi_2_32.png" /></td><td>3</td></tr><tr><td style="text-align: center;"><img src="legend/LahanProduksi_2_43.png" /></td><td>4</td></tr><tr><td style="text-align: center;"><img src="legend/LahanProduksi_2_54.png" /></td><td>5</td></tr><tr><td style="text-align: center;"><img src="legend/LahanProduksi_2_65.png" /></td><td>6</td></tr><tr><td style="text-align: center;"><img src="legend/LahanProduksi_2_76.png" /></td><td>7</td></tr><tr><td style="text-align: center;"><img src="legend/LahanProduksi_2_87.png" /></td><td>8</td></tr><tr><td style="text-align: center;"><img src="legend/LahanProduksi_2_98.png" /></td><td>9</td></tr><tr><td style="text-align: center;"><img src="legend/LahanProduksi_2_109.png" /></td><td>10</td></tr><tr><td style="text-align: center;"><img src="legend/LahanProduksi_2_1110.png" /></td><td>11</td></tr><tr><td style="text-align: center;"><img src="legend/LahanProduksi_2_1211.png" /></td><td>12</td></tr><tr><td style="text-align: center;"><img src="legend/LahanProduksi_2_1312.png" /></td><td>13</td></tr><tr><td style="text-align: center;"><img src="legend/LahanProduksi_2_1413.png" /></td><td>14</td></tr><tr><td style="text-align: center;"><img src="legend/LahanProduksi_2_1514.png" /></td><td>15</td></tr></table>', layer: layer_LahanProduksi_2},
+            {label: '<img src="legend/contour_mayor_7.png" /> contour_mayor', layer: layer_contour_mayor_7},
+            {label: '<img src="legend/contour_minor_6.png" /> contour_minor', layer: layer_contour_minor_6},
+            {label: '<img src="legend/BatasKebun_5.png" /> Batas Kebun', layer: layer_BatasKebun_5},
+            {label: "HillShade", layer: layer_HillShade_4},
+            {label: "Slope", layer: layer_Slope_3},
+            {label: "Topografi", layer: layer_Topografi_2},
             {label: "Google Satellite", layer: layer_GoogleSatellite_1},
             {label: "OpenStreetMap", layer: layer_OpenStreetMap_0},]
         var lay = L.control.layers.tree(null, overlaysTree,{
@@ -627,40 +376,32 @@
         lay.addTo(map);
         setBounds();
         var i = 0;
-        layer_LahanProduksi_2.eachLayer(function(layer) {
+        layer_contour_mayor_7.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['Kode'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['Kode']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_LahanProduksi_2'});
+            layer.bindTooltip((layer.feature.properties['Contour'] !== null?String('<div style="color: #323232; font-size: 5pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['Contour']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_contour_mayor_7'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
               addLabel(layer, i);
               i++;
         });
-        var i = 0;
-        layer_contour_mayor_5.eachLayer(function(layer) {
-            var context = {
-                feature: layer.feature,
-                variables: {}
-            };
-            layer.bindTooltip((layer.feature.properties['Contour'] !== null?String('<div style="color: #323232; font-size: 5pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['Contour']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_contour_mayor_5'});
-            labels.push(layer);
-            totalMarkers += 1;
-              layer.added = true;
-              addLabel(layer, i);
-              i++;
+        L.ImageOverlay.include({
+            getBounds: function () {
+                return this._bounds;
+            }
         });
-        resetLabels([layer_LahanProduksi_2,layer_contour_minor_4,layer_contour_mayor_5]);
+        resetLabels([layer_contour_minor_6,layer_contour_mayor_7]);
         map.on("zoomend", function(){
-            resetLabels([layer_LahanProduksi_2,layer_contour_minor_4,layer_contour_mayor_5]);
+            resetLabels([layer_contour_minor_6,layer_contour_mayor_7]);
         });
         map.on("layeradd", function(){
-            resetLabels([layer_LahanProduksi_2,layer_contour_minor_4,layer_contour_mayor_5]);
+            resetLabels([layer_contour_minor_6,layer_contour_mayor_7]);
         });
         map.on("layerremove", function(){
-            resetLabels([layer_LahanProduksi_2,layer_contour_minor_4,layer_contour_mayor_5]);
+            resetLabels([layer_contour_minor_6,layer_contour_mayor_7]);
         });
         </script>
     </body>
